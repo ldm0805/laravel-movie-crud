@@ -21,5 +21,4 @@
   </div>
   <div class="blur_back bright_back"></div>
 </div>
-
 @endsection
