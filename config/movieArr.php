@@ -1,6 +1,7 @@
 <?php
-return $movies =
-    [
+return [
+    'movies' =>[
+
         [
             'id' => 1,
             'title' => 'Il Padrino',
@@ -101,4 +102,5 @@ return $movies =
             'cast'  => 'Johnny Depp, Christina Ricci, Miranda Richardson, Michael Gambon, Christopher Walken, Christopher Lee',
             'cover_path' => 'https://www.themoviedb.org/t/p/w1280/5KkmPSGnZvynFJL1dPculX2KcR4.jpg'
         ]
-    ];
+    ]
+];
