@@ -66,16 +66,13 @@
                         <p class="movie-actors">{{ $item['cast'] }}</p>
                       </div>
                     </div>
-                    {{-- <div class="mr-grid action-row">
-                      <div class="col2"><div class="watch-btn"><h3><i class="material-icons">&#xE037;</i>WATCH TRAILER</h3></div>
-                      </div>
-                      <div class="col6 action-btn"><i class="material-icons">&#xE161;</i>
-                      </div>
-                      <div class="col6 action-btn"><i class="material-icons">&#xE866;</i>
-                      </div>
-                      <div class="col6 action-btn"><i class="material-icons">&#xE80D;</i>
-                      </div>
-                    </div> --}}
+                    <div>
+                        <form action="{{route('movies.destroy', ['movie' => $item['id']] )}}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <input class="btn btn-danger" type="submit" name="" id="" value="cancella">
+                        </form>
+                    </div>
                   </div>
                 </div>
             </div>
