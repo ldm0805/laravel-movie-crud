@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    @include('movies.index')
     @yield('content')
 </body>
 
