@@ -13,6 +13,11 @@
             <p class="card-text">{{ $item['nationality'] }}</p>
             <p class="card-text">{{ $item['release_date'] }}</p>
             <p class="card-text">{{ $item['vote'] }}</p>
+            <a class="link-single" href="{{ route('movies.show', ['movie' => $item['id']]) }}">
+            <div class="col-but">
+                <button class="footer-button confirm-delete-button">Visualizza Movie</button>
+            </div>
+            </a>
         </div>
     </div>
     @endforeach
