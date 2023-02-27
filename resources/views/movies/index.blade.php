@@ -2,59 +2,48 @@
 
 @section('content')
 {{-- card template --}}
-<div class="d-flex flex-wrap justify-content-center">
+
+<div id="card-template" class="cellphone-container d-flex flex-wrap">
+      
     @foreach ($movies as $item)
-    <div id="card-template">
-        <div class="container">
-            <div class="cellphone-container">    
                 <div class="movie">       
                   <div class="movie-img">
                     <img src="{{ $item['cover_path'] }}" alt="Card image cap">
                   </div>
                   <div class="text-movie-cont">
                     <div class="mr-grid">
-                      <div class="col1">
-                        <h1>{{ $item['title'] }}</h1>
+                      <div class="">
+                        <h3 class="mt-6">{{ $item['title'] }}</h3>
                         <ul class="movie-gen">
-                            <li>{{ $item['release_date'] }} /</li>
-                          <li>2h 49min  /</li>
+                            <li>{{ $item['release_date'] }}</li>
                           <li>{{ $item['nationality'] }}</li>
                         </ul>
                       </div>
                     </div>
                     <div class="mr-grid summary-row">
-                      <div class="col2">
-                        <h5>SUMMARY</h5>
-                      </div>
-                      <div class="col2">
+                      <div class="">
                         <span class="movie-likes">
-                            voto: {{ $item['vote'] }}
+                            Voto: {{ $item['vote'] }}
                         </span>
                       </div>
                     </div>
                     <div class="mr-grid">
-                      <div class="col1">
+                      <div class="">
                         <p class="movie-description">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio at accusamus iure nihil in eaque officia earum excepturi molestiae pariatur, alias aliquam incidunt. Sequi eligendi excepturi accusamus libero! Aperiam, facere?
+                          {{ $item['cast'] }}
                         </div>
                     </div>
-                    <div class="mr-grid actors-row">
-                      <div class="col1">
-                        <p class="movie-actors">{{ $item['cast'] }}</p>
-                      </div>
-                    </div>
                     <div>
+                      <a class="btn btn-success" href="{{ route('movies.show', ['movie' => $item['id']]) }}">Visualizza comic</a>
                         <form action="{{route('movies.destroy', ['movie' => $item['id']] )}}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <input class="btn btn-danger" type="submit" name="" id="" value="cancella">
+                          <input class="btn btn-danger" type="submit" name="" id="" value="Cancella comic">
                         </form>
                     </div>
                   </div>
                 </div>
-            </div>
-          </div>
-    </div>
-    @endforeach
-</div>
+                @endforeach
+              </div>
+
 @endsection
