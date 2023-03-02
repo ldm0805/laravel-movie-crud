@@ -29,7 +29,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.movies.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
