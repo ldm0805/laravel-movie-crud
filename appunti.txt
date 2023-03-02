@@ -118,16 +118,14 @@ composer require pacificdev/laravel_9_preset
 php artisan preset:ui bootstrap --auth
 lanciare i server
 
-creare la cartella admin
-creare il controller DashboardController
-spostare il controller nella cartella Admin
-aggiungere use App\Http\Controllers\Controller;
-Aggiungere admin nel namespace
-creare il metodo index
-
 oppure
 creare il controller con il comando php artisan make:controller Admin/DashboboardController
 creare il metodo index
+spostare il controller dei movie nella cartella admin e aggiungere admin al namespace del controller e usare app\http\controllers\controller nel controller
+reimpostare le rotte in web.php con middleware e verified
+creare la cartella admin dentro views, dentro ci mettiamo i file dashboard.blase e la cartella movies
+cambiare nei file spostati da layouts.ass a layouts.app
+aggiornare i path delle view nelle rotte del controller aggiungendo admin. davanti.
 
 spostare il controller dei movie all'interno della cartella admin, aggiungere admin al namespace e 
 use App\Http\Controllers\Controller;
