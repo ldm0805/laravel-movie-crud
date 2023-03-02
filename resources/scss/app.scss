@@ -1,3 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~resources/scss/partials/_moviecard.scss";
 @import "~resources/scss/partials/_singlemovie.scss";
+
+/* Creazione della scrollbar personalizzata */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #1e1b26;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(61, 59, 59);
+    border-radius: 20px;
+}
+
+/* Stili aggiuntivi */
+::-webkit-scrollbar-corner {
+    background-color: #f5f5f5;
+}

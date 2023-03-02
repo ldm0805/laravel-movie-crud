@@ -1,3 +1,8 @@
+div#card-template .movie-img img {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
 div#card-template {
     $accent-color: #e7e7e7;
     $brand-color: white;
