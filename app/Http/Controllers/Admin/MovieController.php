@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
@@ -15,7 +16,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('movies.index', compact('movies'));
+        return view('admin.movies.index', compact('movies'));
     }
 
     /**
@@ -48,7 +49,7 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie = Movie::findOrFail($id);
-        return view('movies.show', compact('movie'));
+        return view('admin.movies.show', compact('movie'));
     }
 
     /**
@@ -83,6 +84,6 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('movies.index');
+        return redirect()->route('admin.movies.index');
     }
 }
