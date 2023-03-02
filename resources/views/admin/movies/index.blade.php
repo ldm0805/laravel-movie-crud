@@ -33,12 +33,14 @@
                           {{ $item['cast'] }}
                         </div>
                     </div>
-                    <div>
-                      <a class="btn btn-success" href="{{ route('admin.movies.show', ['movie' => $item['id']]) }}">Visualizza comic</a>
+                    <div class="d-flex">
+                      <a class="btn btn-outline-light m-2" href="{{ route('admin.movies.show', ['movie' => $item['id']]) }}"><i class="fa-solid fa-circle-info"></i> info</a>
                         <form action="{{route('admin.movies.destroy', ['movie' => $item['id']] )}}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <input class="btn btn-danger" type="submit" name="" id="" value="Cancella comic">
+                          <button type="submit" class="btn btn-outline-danger m-2">
+                            <i class="fa fa-trash"></i> Elimina
+                        </button>
                         </form>
                     </div>
                   </div>
