@@ -34,6 +34,7 @@
         </div>
       </div>
       <div class="d-flex m-2">
+        <a class="btn btn-outline-light m-2" href="{{ route('admin.movies.edit', ['movie' => $item['id']]) }}"><i class="fa-regular fa-pen-to-square"></i>Modifica</a>
         <a class="btn btn-outline-light m-2" href="{{ route('admin.movies.show', ['movie' => $item['id']]) }}"><i class="fa-solid fa-circle-info"></i> info</a>
           <form action="{{route('admin.movies.destroy', ['movie' => $item['id']] )}}" method="POST">
             @csrf

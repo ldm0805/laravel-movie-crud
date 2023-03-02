@@ -19,9 +19,9 @@
             </div>
             <div class="form-group mb-3">
                 <label class="control-label mb-2">
-                    Original Titolo
+                    Titolo originale
                 </label>
-                <input type="text" class="form-control" placeholder="Titolo" id="original_title" name ="original_title">
+                <input type="text" class="form-control" placeholder="Titolo originale" id="original_title" name ="original_title">
                     @error('original_title')
                     <div class="alert alert-danger mt-2">{{$message}}</div>
                     @enderror
@@ -30,7 +30,7 @@
                 <label class="control-label mb-2">
                     Vote
                 </label>
-                <input type="number" class="form-control" placeholder="Titolo" id="vote" name ="vote">
+                <input type="number" class="form-control" id="vote" name ="vote">
                     @error('vote')
                     <div class="alert alert-danger mt-2">{{$message}}</div>
                     @enderror
