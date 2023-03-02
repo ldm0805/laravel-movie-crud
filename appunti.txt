@@ -91,12 +91,12 @@ public function store(StoreProjectRequest $request)
 
 
 Aggiornare laravel:
+creare la cartella css con dentro app.css in resources;
+creare il file welcome.blade.php in resources
 stoppare i server
 composer require laravel/breeze --dev
 file composer.json-> da  "laravel/framework": "^9.0", "laravel/framework": "^9.2"
-lanciare il comando composer autoload;
-creare la cartella css con dentro app.css in resources;
-creare il file welcome.blade.php in resources
+lanciare il comando composer update;
 lanciare il comando composer remove pacificdev/laravel_9_preset
 composer require pacificdev/laravel_9_preset
 php artisan breeze:install
