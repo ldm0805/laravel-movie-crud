@@ -38,13 +38,14 @@
           <form action="{{route('admin.movies.destroy', ['movie' => $item['id']] )}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-outline-danger m-2">
+            <button type="submit" class="btn btn-outline-danger m-2 confirm-delete-button">
               <i class="fa fa-trash"></i> Elimina
           </button>
           </form>
       </div>
     </div>
       @endforeach
+      @include ('admin.partials.modals')
 </div>
 
 @endsection
