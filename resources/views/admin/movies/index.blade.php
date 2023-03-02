@@ -4,7 +4,7 @@
 {{-- card template --}}
 
 <div id="card-template" class="cellphone-container d-flex flex-wrap"> 
-  @foreach ($movies as $item)
+  @forelse ($movies as $item)
     <div class="movie d-flex flex-column justify-content-between rounded-4">       
       <div class="movie-img ">
         <img src="{{ $item['cover_path'] }}" alt="Card image cap">
@@ -38,13 +38,25 @@
           <form action="{{route('admin.movies.destroy', ['movie' => $item['id']] )}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-outline-danger m-2">
+            <button type="submit" class="btn btn-outline-danger m-2 confirm-delete-button">
               <i class="fa fa-trash"></i> Elimina
           </button>
           </form>
       </div>
     </div>
-      @endforeach
+    @empty
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                    <div class="alert alert-primary text-center" role="alert">
+                        <h4 class="alert-heading mb-4">Il database dei tuoi Movies è vuoto</h4>
+                        <p class="lead">Clicca sul pulsante "Aggiungi Movies" per aggiungerli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      @endforelse
+      @include ('admin.partials.modals')
 </div>
 
 @endsection

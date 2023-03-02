@@ -3,7 +3,7 @@
 <div class="container text-white">
     <div class="row">
         <div class="col-12 text-center m-4">
-            <h2 class="text-white">Aggiungi nuovo movies</h2>
+            <h2 class="text-white">Modifica questo movies</h2>
         </div>
         <div class="col-12">
             <form action="{{route('admin.movies.store')}}" method="POST">
