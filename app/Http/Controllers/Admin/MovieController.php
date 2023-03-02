@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\UpdateMovieRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMovieRequest;
 
@@ -64,21 +63,23 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        //
+        return view('admin.movies.edit', compact('movie'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateMovieRequest  $request
+     * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMovieRequest $request,Movie $movie)
     {
-        //
+        $form_data = $request->validated();
+        $movie->update($form_data);
+        return redirect()->route('admin.movies.index')->with('message', 'Hai modificato il file correttamente');
     }
 
     /**
@@ -90,6 +91,6 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('admin.movies.index');
+        return redirect()->route('admin.movies.index')->with('message', 'La cancellazione del project '.$movie->title.' è andata a buon fine.');;
     }
 }
