@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 {{-- card template --}}
@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div>
-                      <a class="btn btn-success" href="{{ route('movies.show', ['movie' => $item['id']]) }}">Visualizza comic</a>
-                        <form action="{{route('movies.destroy', ['movie' => $item['id']] )}}" method="POST">
+                      <a class="btn btn-success" href="{{ route('admin.movies.show', ['movie' => $item['id']]) }}">Visualizza comic</a>
+                        <form action="{{route('admin.movies.destroy', ['movie' => $item['id']] )}}" method="POST">
                           @csrf
                           @method('DELETE')
                           <input class="btn btn-danger" type="submit" name="" id="" value="Cancella comic">
