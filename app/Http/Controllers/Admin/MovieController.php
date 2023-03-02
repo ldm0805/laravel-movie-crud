@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMovieRequest;
 
 class MovieController extends Controller
 {
@@ -38,9 +39,11 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMovieRequest $request)
     {
-       
+        $form_data = $request->validated();
+        Movie::create($form_data);
+        return redirect()->route('admin.movies.index')->with('message', 'hai creato un nuovo file correttamente');
     }
 
     /**
