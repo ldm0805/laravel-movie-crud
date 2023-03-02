@@ -39,7 +39,7 @@
                 <label class="control-label mb-2">
                     Cover
                 </label>
-                <input type="text" class="form-control" placeholder="Titolo" id="cover_path" name ="cover_path">
+                <input type="text" class="form-control" placeholder="Titolo originale" id="cover_path" name ="cover_path">
                     @error('cover_path')
                     <div class="alert alert-danger mt-2">{{$message}}</div>
                     @enderror
@@ -48,16 +48,22 @@
                 <label class="control-label mb-2">
                     Data
                 </label>
-                <input type="date" class="form-control" placeholder="Data" name="release_data">
-                    @error('release_data')
+                <input type="date" class="form-control" placeholder="Data" name="release_date">
+                    @error('release_date')
                         <div class="alert alert-danger mt-2">{{$message}}</div>
                     @enderror
             </div>
             <div class="form-group mb-3">
                 <label class="control-label mb-2">
-                    Contenuto
+                    Cast
                 </label>
-                <textarea type="text-area" class="form-control" placeholder="Contenuto" id="cast" name ="cast"></textarea>
+                <textarea type="text-area" class="form-control" placeholder="Cast" id="cast" name ="cast"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label mb-2">
+                    Nazionalità
+                </label>
+                <textarea type="text-area" class="form-control" placeholder="Nazionalità" id="nationality" name ="nationality"></textarea>
             </div>
             <div class="form-group mb-3">
                 <button type="submit" class="btnblue">Salva</button>
