@@ -6,8 +6,9 @@
             <h2 class="text-white">Modifica questo movies</h2>
         </div>
         <div class="col-12">
-            <form action="{{route('admin.movies.store')}}" method="POST">
+            <form action="{{route('admin.movies.update', $movie->id)}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="form-group mb-3">
                 <label class="control-label mb-2">
                     Titolo
