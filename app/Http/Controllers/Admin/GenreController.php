@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Genre;
 use App\Models\Movie;
+use app\Models\Cast;
 
 use App\Http\Requests\StoreGenreRequest;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,8 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        $genres = Genre::all();
+        return view('admin.genres.create', compact('genres'));
     }
 
     /**
@@ -41,7 +43,11 @@ class GenreController extends Controller
      */
     public function store(StoreGenreRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $slug = Genre::generateSlug($request->genre, '-');
+        $form_data['slug'] = $slug;
+        Genre::create($form_data);
+        return redirect()->route('admin.genres.index')->with('message', 'hai creato un nuovo genere correttamente');
     }
 
     /**
@@ -53,7 +59,7 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         $movies = Movie::all();
-        return view('admin.genres.show', compact('genre','movies'));
+        return view('admin.genres.show', compact('genre', 'movies'));
     }
 
     /**
@@ -64,7 +70,7 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        //
+        return view('admin.genres.edit', compact('genre'));
     }
 
     /**
@@ -76,7 +82,15 @@ class GenreController extends Controller
      */
     public function update(UpdateGenreRequest $request, Genre $genre)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Genre::generateSlug($request->genre, '-');
+
+        $form_data['slug'] = $slug;
+
+        $genre->update($form_data);
+
+        return redirect()->route('admin.genres.index')->with('message', 'La modifica del livello di difficoltà ' . $genre->genre . ' è andata a buon fine.');
     }
 
     /**
@@ -87,6 +101,7 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+        return redirect()->route('admin.genres.index');
     }
 }

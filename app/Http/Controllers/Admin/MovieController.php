@@ -25,7 +25,7 @@ class MovieController extends Controller
         $movies = Movie::all();
         $casts = Cast::all();
 
-        return view('admin.movies.index', compact('movies','casts'));
+        return view('admin.movies.index', compact('movies', 'casts'));
     }
 
     /**
@@ -37,7 +37,7 @@ class MovieController extends Controller
     {
         $genres = Genre::all();
         $casts = Cast::all();
-        return view('admin.movies.create', compact('genres','casts'));
+        return view('admin.movies.create', compact('genres', 'casts'));
     }
 
     /**
@@ -49,9 +49,9 @@ class MovieController extends Controller
     public function store(StoreMovieRequest $request)
     {
         $form_data = $request->validated();
-        Movie::create($form_data);
+        $newMovie = Movie::create($form_data);
 
-        if($request->has('casts')){
+        if ($request->has('casts')) {
             $newMovie->casts()->attach($request->casts);
         }
         return redirect()->route('admin.movies.index')->with('message', 'hai creato un nuovo file correttamente');
@@ -80,8 +80,8 @@ class MovieController extends Controller
         $genres = Genre::all();
         $casts = Cast::all();
 
-        
-        return view('admin.movies.edit', compact('movie','genres','casts'));
+
+        return view('admin.movies.edit', compact('movie', 'genres', 'casts'));
     }
 
     /**
@@ -91,11 +91,11 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovieRequest $request,Movie $movie)
+    public function update(UpdateMovieRequest $request, Movie $movie)
     {
         $form_data = $request->validated();
         $movie->update($form_data);
-        if($request->has('casts')){
+        if ($request->has('casts')) {
             $movie->casts()->sync($request->casts);
         }
         return redirect()->route('admin.movies.index')->with('message', 'Hai modificato il file correttamente');
@@ -110,6 +110,6 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('admin.movies.index')->with('message', 'La cancellazione del project '.$movie->title.' è andata a buon fine.');;
+        return redirect()->route('admin.movies.index')->with('message', 'La cancellazione del project ' . $movie->title . ' è andata a buon fine.');;
     }
 }

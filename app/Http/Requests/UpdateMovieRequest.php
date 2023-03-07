@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule; 
+use Illuminate\Validation\Rule;
 
 class UpdateMovieRequest extends FormRequest
 {
@@ -31,7 +31,8 @@ class UpdateMovieRequest extends FormRequest
             'nationality' => ['required', 'max:20'],
             'vote' => ['required', 'numeric', 'between:1,10'],
             'cover_path' => ['required', 'max:100'],
-            'cast' => ['nullable']
+            'cast' => ['nullable'],
+            'genre' => ['required'],
         ];
     }
     /**
@@ -39,8 +40,9 @@ class UpdateMovieRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function messages(){
-        return[
+    public function messages()
+    {
+        return [
             'title.required' => 'Il titolo è obbligatorio',
             'title.unique' => 'Il project con questo titolo è già presente nella pagina',
             'original_title.required' => 'Il titolo originale è obbligatorio',

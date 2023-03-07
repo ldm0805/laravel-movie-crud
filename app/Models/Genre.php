@@ -9,13 +9,15 @@ use Illuminate\Support\Str;
 class Genre extends Model
 {
     use HasFactory;
-    protected $fillable = ['genre', 'slug'];
+    protected $guarded = [];
 
-    public static function generateSlug($genre){
+    public static function generateSlug($genre)
+    {
         return Str::slug($genre, '-');
     }
-    
-    public function movie(){
+
+    public function movie()
+    {
         return $this->hasMany(Movie::class);
     }
 }
