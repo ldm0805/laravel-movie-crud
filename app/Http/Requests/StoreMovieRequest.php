@@ -30,11 +30,13 @@ class StoreMovieRequest extends FormRequest
             'nationality' => ['required', 'max:20'],
             'vote' => ['required', 'numeric', 'between:1,10'],
             'cover_path' => ['required', 'max:100'],
-            'genre_id' => ['nullable','exists:genres,id'],
-            // 'cast_id' => ['exists:casts,id'],
-            'movie_id' => ['exists:movies,id'],
-            'cast_id' => ['exists:casts,id'],
-            'casts' => ['exists:casts,id'],
+
+            'genre_id' => ['exists:genres,id'],
+            'casts' => ['exists:genres,id'],
+            'genre' => ['required'],
+            'slug' => ['required'],
+
+
         ];
     }
     /**
@@ -57,14 +59,11 @@ class StoreMovieRequest extends FormRequest
             'nationality.max' => 'La nazionalità può essere lungo al massimo :max caratteri.',
             'cover_path.max' => 'Il link dell\'immagine può essere lungo al massimo :max caratteri.',
             'genre_id.exists' => 'il genere non è valido',
-            'cast_id.exists' => 'Il tag selezionato non è valido',
-            'movie_id.exists' => 'Il tag selezionato non è valido',
-            // 'casts.required' => 'Il cast è richiesto',
-            'cast_id.exists' => 'Il tipo selezionato non è corretto',
-            'tags.exists' => 'Il Tag selezionato non è corretto',
+            'casts.exists' => 'il cast non è valido',
+            'genre' => 'il genere è richiesto',
+            'slug' => 'lo slug è richiesto'
 
 
-            
         ];
     }
 }

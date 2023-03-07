@@ -13,7 +13,7 @@ class StoreGenreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class StoreGenreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'genre' => ['required', 'unique:genres', 'max:150'],
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'genre.required' => 'Il genere è obbligatorio',
+            'genre.unique' => 'Il movies con questo genere è già presente nella pagina',
+            'genre.max' => 'Il genere può essere lungo al massimo :max caratteri.',
+
         ];
     }
 }

@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-  
+  <div class="m-3">
+    <a href="{{route('admin.genres.create')}}">
+    <button class="btn btn-sm btn-primary">
+      aggiungi genere
+    </button>
+    </a>
+  </div>
     <div>
       <h1>generi</h1>
     </div>
