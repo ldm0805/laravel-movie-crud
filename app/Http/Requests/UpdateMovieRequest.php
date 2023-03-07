@@ -32,7 +32,9 @@ class UpdateMovieRequest extends FormRequest
             'vote' => ['required', 'numeric', 'between:1,10'],
             'cover_path' => ['required', 'max:100'],
             'cast' => ['nullable'],
+
             'genre' => ['required'],
+
         ];
     }
     /**
@@ -54,6 +56,10 @@ class UpdateMovieRequest extends FormRequest
             'cover_path.required' => 'La copertina è obbligatoria',
             'nationality.max' => 'La nazionalità può essere lungo al massimo :max caratteri.',
             'cover_path.max' => 'Il link dell\'immagine può essere lungo al massimo :max caratteri.',
+            'genre_id.exists' => 'Il tag selezionato non è valido',
+            'cast_id.exists' => 'Il tag selezionato non è valido',
+            'movie_id.exists' => 'Il tag selezionato non è valido',
+
         ];
     }
 }

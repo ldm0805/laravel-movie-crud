@@ -30,10 +30,12 @@ class StoreMovieRequest extends FormRequest
             'nationality' => ['required', 'max:20'],
             'vote' => ['required', 'numeric', 'between:1,10'],
             'cover_path' => ['required', 'max:100'],
+
             'genre_id' => ['exists:genres,id'],
             'casts' => ['exists:genres,id'],
             'genre' => ['required'],
             'slug' => ['required'],
+
 
         ];
     }
@@ -60,6 +62,7 @@ class StoreMovieRequest extends FormRequest
             'casts.exists' => 'il cast non è valido',
             'genre' => 'il genere è richiesto',
             'slug' => 'lo slug è richiesto'
+
 
         ];
     }

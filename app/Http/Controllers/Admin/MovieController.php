@@ -49,6 +49,7 @@ class MovieController extends Controller
     public function store(StoreMovieRequest $request)
     {
         $form_data = $request->validated();
+
         $newMovie = Movie::create($form_data);
 
         if ($request->has('casts')) {
@@ -94,8 +95,15 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
         $form_data = $request->validated();
+
+        $slug = Movie::generateSlug($request->title, '-');
+        
+        $form_data['slug'] = $slug;
+        
         $movie->update($form_data);
+
         if ($request->has('casts')) {
+
             $movie->casts()->sync($request->casts);
         }
         return redirect()->route('admin.movies.index')->with('message', 'Hai modificato il file correttamente');
