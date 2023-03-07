@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>Generi</h2>
+            <h2 class="text-white">Generi</h2>
         </div>
     </div>
     <div class="row">
@@ -13,10 +13,12 @@
                 <div class="card-img-top">
                     <img src="{{$movie->cover_path}}" alt="">
                 </div>
-                {{$movie->title}}
+                <div class="text-white">
+                    {{$movie->title}}
+                </div>
             </div>
             @empty
-            <div class="text-center">
+            <div class="text-center text-white">
                 non sono presenti film per il genere selezionato
             </div>
             @endforelse
