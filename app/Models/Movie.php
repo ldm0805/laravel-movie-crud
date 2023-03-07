@@ -10,4 +10,12 @@ class Movie extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
+    public function casts(){
+        return $this->belongsToMany(Cast::class);
+    }
+
 }

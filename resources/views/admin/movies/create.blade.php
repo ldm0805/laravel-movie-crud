@@ -54,10 +54,31 @@
                     @enderror
             </div>
             <div class="form-group mb-3">
-                <label class="control-label mb-2">
-                    Cast
-                </label>
-                <textarea type="text-area" class="form-control" placeholder="Cast" id="cast" name ="cast"></textarea>
+                <label class="control-label">Genere</label>
+                <select class="form-control" name="genre_id" id="genre_id">
+                    @foreach($genres as $genre)
+                    <option value="{{$genre->id}}">{{$genre->genre}}</option>
+                    @endforeach
+                    @error('genre_id')
+                        <div class="text-danger">{{message}}</div>
+                    @enderror
+                </select>
+            </div>
+            <div class="form-goup mb-3">
+                <label for="" class="control-label">Attori</label>
+                @foreach($casts as $cast)
+                <div class="row">
+                    <div class="col-3 form-group @error('casts') is-invalid @enderror">
+                        <input type="checkbox" name="casts[]" class="form-check-input" value={{$cast->id}}>
+                        <label for="" class="form-check-label">{{$cast->nome_cognome}}</label>
+                    </div>
+                </div>
+                @endforeach
+                @error('casts')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="form-group mb-3">
                 <label class="control-label mb-2">

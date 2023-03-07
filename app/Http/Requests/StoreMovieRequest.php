@@ -30,7 +30,9 @@ class StoreMovieRequest extends FormRequest
             'nationality' => ['required', 'max:20'],
             'vote' => ['required', 'numeric', 'between:1,10'],
             'cover_path' => ['required', 'max:100'],
-            'cast' => ['nullable']
+            'genre_id' => ['exists:genres,id'],
+            'casts' => ['exists:genres,id']
+
         ];
     }
     /**
@@ -52,6 +54,10 @@ class StoreMovieRequest extends FormRequest
             'cover_path.required' => 'La copertina è obbligatoria',
             'nationality.max' => 'La nazionalità può essere lungo al massimo :max caratteri.',
             'cover_path.max' => 'Il link dell\'immagine può essere lungo al massimo :max caratteri.',
+            'genre_id.exists' => 'il genere non è valido',
+            'casts.exists' => 'il cast non è valido',
+
+            
         ];
     }
 }

@@ -55,10 +55,38 @@
                     @enderror
             </div>
             <div class="form-group mb-3">
-                <label class="control-label mb-2">
-                    Cast
-                </label>
-                <textarea type="text-area" class="form-control" placeholder="Cast" id="cast" name ="cast">{{old('cast') ?? $movie->cast}}</textarea>
+                <label class="control-label">Genere</label>
+                <select class="form-control" name="genre_id" id="genre_id">
+                    @foreach($genres as $genre)
+                    <option value="{{$genre->id}}" {{$genre->id == old('genre_id', $movie->genre_id) ? 'selected' : ''}}>{{$genre->genre}}</option>
+                    @endforeach
+                    @error('genre_id')
+                        <div class="text-danger">{{message}}</div>
+                    @enderror
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Attori</label>
+                    <div class="row">
+                        @foreach($casts as $cast)
+                        <div class="col-4">
+
+                            <div class="form-check @error('casts') is-invalid @enderror">
+                                @if($errors->any())
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{in_array($cast->id, old('casts', [])) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{$cast->nome_cognome}}</label>
+                                @else
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->contains($cast) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{$cast->nome_cognome}}</label>
+                                @endif
+                            </div>
+                        </div>
+                            @endforeach
+                    </div>
+                    @error('casts')
+                        <div class="text-danger">{{message}}</div>
+                    @enderror
+                </select>
             </div>
             <div class="form-group mb-3">
                 <label class="control-label mb-2">

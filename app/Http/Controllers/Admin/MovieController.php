@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Genre;
+use App\Models\Cast;
+
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateMovieRequest;
 use App\Http\Controllers\Controller;
@@ -19,7 +23,9 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('admin.movies.index', compact('movies'));
+        $casts = Cast::all();
+
+        return view('admin.movies.index', compact('movies','casts'));
     }
 
     /**
@@ -29,7 +35,9 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('admin.movies.create');
+        $genres = Genre::all();
+        $casts = Cast::all();
+        return view('admin.movies.create', compact('genres','casts'));
     }
 
     /**
@@ -42,6 +50,10 @@ class MovieController extends Controller
     {
         $form_data = $request->validated();
         Movie::create($form_data);
+
+        if($request->has('casts')){
+            $newMovie->casts()->attach($request->casts);
+        }
         return redirect()->route('admin.movies.index')->with('message', 'hai creato un nuovo file correttamente');
     }
 
@@ -65,7 +77,11 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('admin.movies.edit', compact('movie'));
+        $genres = Genre::all();
+        $casts = Cast::all();
+
+        
+        return view('admin.movies.edit', compact('movie','genres','casts'));
     }
 
     /**
@@ -79,6 +95,9 @@ class MovieController extends Controller
     {
         $form_data = $request->validated();
         $movie->update($form_data);
+        if($request->has('casts')){
+            $movie->casts()->sync($request->casts);
+        }
         return redirect()->route('admin.movies.index')->with('message', 'Hai modificato il file correttamente');
     }
 
