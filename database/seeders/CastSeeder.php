@@ -15,7 +15,8 @@ class CastSeeder extends Seeder
      */
     public function run()
     {
-        $casts = ['Fantasy', 'Avventura', 'Horror', 'Thriller', 'Azione', 'Noir', 'Comico','Pulp', 'Drammatico','Sci-fi'];
+        $casts = ['Tom Hanks', 'Meryl Streep', 'Denzel Washington', 'Viola Davis', 'Anthony Hopkins', 'Emma Stone', 'Leonardo DiCaprio', 'Jennifer Lawrence', 'Brad Pitt', 'Angelina Jolie', 'Charlize Theron', 'Matt Damon', 'Julia Roberts', 'George Clooney', 'Cate Blanchett', 'Robert De Niro', 'Al Pacino', 'Jack Nicholson', 'Dustin Hoffman', 'Tom Cruise', 'Nicole Kidman', 'Kate Winslet', 'Johnny Depp', 'Halle Berry', 'Samuel L. Jackson', 'Will Smith', 'Jodie Foster', 'Kevin Spacey', 'Robin Williams', 'Sean Connery', 'Morgan Freeman', 'Mel Gibson', 'Sandra Bullock', 'Jim Carrey', 'Keanu Reeves', 'Mark Wahlberg', 'Scarlett Johansson', 'Chris Evans', 'Ryan Reynolds', 'Gal Gadot', 'Robert Downey Jr.'];
+
         foreach($casts as $cast){
             $newCast = new Cast();
             $newCast->nome_cognome = $cast;

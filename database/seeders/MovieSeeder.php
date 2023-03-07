@@ -24,7 +24,6 @@ class MovieSeeder extends Seeder
             $newMovie->release_date = $movie['release_date'];
             $newMovie->vote = $movie['vote'];
             $newMovie->cover_path = $movie['cover_path'];
-            $newMovie->cast = $movie['cast'];
             $newMovie->save();
         }
     }
