@@ -10,10 +10,10 @@
     </div>
     <div class="movie_desc">
         <h5 class="text-white">
-            Cast:
+            Genre:
         </h5>
         <p class="text">
-        {{$movie->cast}}
+        {{$movie->genre ? $movie->genre->genre : 'nessun genere trovato'}}
       </p>
       <h6 class="text-white">Data di uscita: {{$movie->release_date}}</h6>
       <h6 class="text-white">Nazionalità: {{$movie->nationality}}</h6>

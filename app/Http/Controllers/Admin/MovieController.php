@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Genre;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateMovieRequest;
 use App\Http\Controllers\Controller;
@@ -29,7 +31,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('admin.movies.create');
+        $genres = Genre::all();
+        return view('admin.movies.create', compact('genres'));
     }
 
     /**
@@ -65,7 +68,8 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('admin.movies.edit', compact('movie'));
+        $genres = Genre::all();
+        return view('admin.movies.edit', compact('movie','genres'));
     }
 
     /**
