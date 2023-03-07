@@ -76,7 +76,7 @@
                                     <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{in_array($cast->id, old('casts', [])) ? 'checked' : ''}}>
                                     <label class="form-check-label">{{$cast->nome_cognome}}</label>
                                 @else
-                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->containts($cast) ? 'checked' : ''}}>
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->contains($cast) ? 'checked' : ''}}>
                                     <label class="form-check-label">{{$cast->nome_cognome}}</label>
                                 @endif
                             </div>
