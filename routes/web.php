@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\MovieController as MovieController;
+use App\Http\Controllers\Admin\GenreController as GenreController;
+
 
 
 
@@ -29,6 +31,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/movies', MovieController::class);
+    Route::resource('/genres', GenreController::class);
+
 });
 
 Route::middleware('auth')->group(function () {

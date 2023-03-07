@@ -59,11 +59,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.movies.index' ? 'bg-secondary' : '' }}" href="{{route('admin.movies.index') }}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> 
-                                    movies
+                                    Lista Film
                                 </a>
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.movies.create' ? 'bg-secondary' : '' }}" href="{{route('admin.movies.create') }}">
                                     <i class="fa-solid fa-square-plus fa-lg fa-fw"></i>
-                                    Aggiungi un nuovo project.
+                                    Aggiungi un nuovo film.
+                                </a>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.genres.index' ? 'bg-secondary' : '' }}" href="{{route('admin.genres.index') }}">
+                                    <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> 
+                                    Lista generi
                                 </a>
                             </li>
 
