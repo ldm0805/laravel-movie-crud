@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12">
             @forelse($genre->movie as $movie)
-            <div class="card">
+            <div class="card col-12">
                 <div class="card-img-top">
                     <img src="{{$movie->cover_path}}" alt="">
                 </div>

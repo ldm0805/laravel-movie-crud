@@ -17,7 +17,7 @@ class GenreSeeder extends Seeder
         $genres = ['Fantasy', 'Avventura', 'Horror', 'Thriller', 'Azione', 'Noir', 'Comico','Pulp', 'Drammatico','Sci-fi'];
         foreach($genres as $genre){
             $newGenre = new Genre();
-            $newGenre->genre = $genre;;
+            $newGenre->genre = $genre;
             $newGenre->slug = Genre::generateSlug($genre);
 
             $newGenre->save();

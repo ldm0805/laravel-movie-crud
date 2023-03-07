@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Genre;
-use App\Models\Movie;
+use App\Models\Cast;
+use App\Http\Requests\StoreCastRequest;
+use App\Http\Requests\UpdateCastRequest;
 
-use App\Http\Requests\StoreGenreRequest;
-use App\Http\Controllers\Controller;
-
-use App\Http\Requests\UpdateGenreRequest;
-
-class GenreController extends Controller
+class CastController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +15,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::all();
-        return view('admin.genres.index', compact('genres'));
+        //
     }
 
     /**
@@ -36,10 +31,10 @@ class GenreController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGenreRequest  $request
+     * @param  \App\Http\Requests\StoreCastRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGenreRequest $request)
+    public function store(StoreCastRequest $request)
     {
         //
     }
@@ -47,22 +42,21 @@ class GenreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Genre  $genre
+     * @param  \App\Models\Cast  $cast
      * @return \Illuminate\Http\Response
      */
-    public function show(Genre $genre)
+    public function show(Cast $cast)
     {
-        $movies = Movie::all();
-        return view('admin.genres.show', compact('genre','movies'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Genre  $genre
+     * @param  \App\Models\Cast  $cast
      * @return \Illuminate\Http\Response
      */
-    public function edit(Genre $genre)
+    public function edit(Cast $cast)
     {
         //
     }
@@ -70,11 +64,11 @@ class GenreController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateGenreRequest  $request
-     * @param  \App\Models\Genre  $genre
+     * @param  \App\Http\Requests\UpdateCastRequest  $request
+     * @param  \App\Models\Cast  $cast
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGenreRequest $request, Genre $genre)
+    public function update(UpdateCastRequest $request, Cast $cast)
     {
         //
     }
@@ -82,10 +76,10 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Genre  $genre
+     * @param  \App\Models\Cast  $cast
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Genre $genre)
+    public function destroy(Cast $cast)
     {
         //
     }

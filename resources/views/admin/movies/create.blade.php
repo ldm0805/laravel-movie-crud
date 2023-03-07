@@ -64,6 +64,22 @@
                     @enderror
                 </select>
             </div>
+            <div class="form-goup mb-3">
+                <label for="" class="control-label">Attori</label>
+                @foreach($casts as $cast)
+                <div class="row">
+                    <div class="col-3 form-group @error('casts') is-invalid @enderror">
+                        <input type="checkbox" name="casts[]" class="form-check-input">
+                        <label for="" class="form-check-label">{{$cast->nome_cognome}}</label>
+                    </div>
+                </div>
+                @endforeach
+                @error('casts')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
             <div class="form-group mb-3">
                 <label class="control-label mb-2">
                     Nazionalità

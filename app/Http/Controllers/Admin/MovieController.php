@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Genre;
+use App\Models\Cast;
+
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateMovieRequest;
@@ -32,7 +34,8 @@ class MovieController extends Controller
     public function create()
     {
         $genres = Genre::all();
-        return view('admin.movies.create', compact('genres'));
+        $casts = Cast::all();
+        return view('admin.movies.create', compact('genres','casts'));
     }
 
     /**
@@ -45,6 +48,10 @@ class MovieController extends Controller
     {
         $form_data = $request->validated();
         Movie::create($form_data);
+
+        if($request->has('casts')){
+            $newMovie->casts()->attach($request->casts);
+        }
         return redirect()->route('admin.movies.index')->with('message', 'hai creato un nuovo file correttamente');
     }
 
