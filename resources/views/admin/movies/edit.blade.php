@@ -73,17 +73,17 @@
 
                             <div class="form-check @error('casts') is-invalid @enderror">
                                 @if($errors->any())
-                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{in_array(tag->id, old('tags', [])) ? 'checked' : ''}}>
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{in_array($cast->id, old('casts', [])) ? 'checked' : ''}}>
                                     <label class="form-check-label">{{$cast->nome_cognome}}</label>
                                 @else
-                                <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->containts($cast) ? 'checked' : ''}}>
-                                <label class="form-check-label">{{$cast->nome_cognome}}</label>
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->containts($cast) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{$cast->nome_cognome}}</label>
                                 @endif
                             </div>
                         </div>
                             @endforeach
                     </div>
-                    @error('genre_id')
+                    @error('casts')
                         <div class="text-danger">{{message}}</div>
                     @enderror
                 </select>
