@@ -13,16 +13,15 @@ class CastSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
-        $casts = ['Fantasy', 'Avventura', 'Horror', 'Thriller', 'Azione', 'Noir', 'Comico','Pulp', 'Drammatico','Sci-fi'];
-        foreach($casts as $cast){
+        $casts = config('actorArr.actors');
+        foreach ($casts as $cast) {
             $newCast = new Cast();
             $newCast->nome_cognome = $cast;
             $newCast->slug = Cast::generateSlug($cast);
             $newCast->save();
-
         }
-        
     }
 }
