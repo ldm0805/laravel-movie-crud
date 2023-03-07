@@ -49,8 +49,13 @@ class MovieController extends Controller
     public function store(StoreMovieRequest $request)
     {
         $form_data = $request->validated();
-        Movie::create($form_data);
-
+        
+        $slug = Movie::generateSlug($request->title, '-');
+        
+        $form_data['slug'] = $slug;
+        
+        $newMovie = Movie::create($form_data);
+        
         if($request->has('casts')){
             $newMovie->casts()->attach($request->casts);
         }
@@ -94,7 +99,14 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request,Movie $movie)
     {
         $form_data = $request->validated();
+
+        $slug = Movie::generateSlug($request->title, '-');
+        
+        $form_data['slug'] = $slug;
+        
         $movie->update($form_data);
+
+
         if($request->has('casts')){
             $movie->casts()->sync($request->casts);
         }

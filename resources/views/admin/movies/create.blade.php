@@ -5,6 +5,11 @@
         <div class="col-12 text-center m-4">
             <h2 class="text-white">Aggiungi nuovo movies</h2>
         </div>
+        @if($errors->any())
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        @endif
         <div class="col-12">
             <form action="{{route('admin.movies.store')}}" method="POST">
             @csrf
@@ -68,9 +73,9 @@
                 <label for="" class="control-label">Attori</label>
                 @foreach($casts as $cast)
                 <div class="row">
-                    <div class="col-3 form-group @error('casts') is-invalid @enderror">
+                    <div class="col-3 form-check @error('casts') is-invalid @enderror">
                         <input type="checkbox" name="casts[]" class="form-check-input" value={{$cast->id}}>
-                        <label for="" class="form-check-label">{{$cast->nome_cognome}}</label>
+                        <label class="form-check-label">{{$cast->nome_cognome}}</label>
                     </div>
                 </div>
                 @endforeach
