@@ -76,7 +76,10 @@ class MovieController extends Controller
     public function edit(Movie $movie)
     {
         $genres = Genre::all();
-        return view('admin.movies.edit', compact('movie','genres'));
+        $casts = Cast::all();
+
+        
+        return view('admin.movies.edit', compact('movie','genres','casts'));
     }
 
     /**
@@ -90,6 +93,9 @@ class MovieController extends Controller
     {
         $form_data = $request->validated();
         $movie->update($form_data);
+        if($request->has('casts')){
+            $movie->casts()->sync($request->casts);
+        }
         return redirect()->route('admin.movies.index')->with('message', 'Hai modificato il file correttamente');
     }
 

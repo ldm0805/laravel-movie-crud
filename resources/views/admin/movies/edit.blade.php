@@ -66,6 +66,29 @@
                 </select>
             </div>
             <div class="form-group mb-3">
+                <label class="control-label">Attori</label>
+                    <div class="row">
+                        @foreach($casts as $cast)
+                        <div class="col-4">
+
+                            <div class="form-check @error('casts') is-invalid @enderror">
+                                @if($errors->any())
+                                    <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{in_array(tag->id, old('tags', [])) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{$cast->nome_cognome}}</label>
+                                @else
+                                <input type="checkbox" value="{{$cast->id}}" class="form-check-input" name="casts[]" {{$movie->casts->containts($cast) ? 'checked' : ''}}>
+                                <label class="form-check-label">{{$cast->nome_cognome}}</label>
+                                @endif
+                            </div>
+                        </div>
+                            @endforeach
+                    </div>
+                    @error('genre_id')
+                        <div class="text-danger">{{message}}</div>
+                    @enderror
+                </select>
+            </div>
+            <div class="form-group mb-3">
                 <label class="control-label mb-2">
                     Nazionalità
                 </label>

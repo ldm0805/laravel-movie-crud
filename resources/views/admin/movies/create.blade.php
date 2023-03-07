@@ -69,7 +69,7 @@
                 @foreach($casts as $cast)
                 <div class="row">
                     <div class="col-3 form-group @error('casts') is-invalid @enderror">
-                        <input type="checkbox" name="casts[]" class="form-check-input">
+                        <input type="checkbox" name="casts[]" class="form-check-input" value={{$cast->id}}>
                         <label for="" class="form-check-label">{{$cast->nome_cognome}}</label>
                     </div>
                 </div>
